@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.san.graduation.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.san.graduation.domain.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+        <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
+        <result column="mobile_no" jdbcType="VARCHAR" property="mobileNo"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="school" jdbcType="VARCHAR" property="school"/>
+        <result column="major" jdbcType="VARCHAR" property="major"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+    </resultMap>
+
+    <update id="updateByUserNo" parameterType="com.san.graduation.domain.User">
+        UPDATE user set mobile_no = #{mobileNo},province = #{province},city = #{city},
+        address = #{address},school=#{school},major=#{major},user_name=#{userName}
+        WHERE is_delete = 0 and user_no = #{userNo}
+    </update>
+    <update id="deleteByUserNo" parameterType="java.lang.String">
+        UPDATE user set is_delete = 1 where user_no = #{userNo}
+    </update>
+
+    <select id="findByUserNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT user_no,mobile_no,province,city,address,school,major,user_name from USER WHERE  is_delete = 0 and user_no = #{userNo}
+    </select>
+
+    <select id="findByMobileNoAndPassword"  resultMap="BaseResultMap">
+        SELECT user_no,mobile_no,province,city,address,school,major,user_name from USER WHERE  is_delete = 0 and
+        mobile_no = #{mobileNo} and password =#{password}
+    </select>
+</mapper>

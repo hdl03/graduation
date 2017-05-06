@@ -1,0 +1,130 @@
+server:
+  port: ${graduation.server.port}
+  undertow:
+    accesslog:
+      dir: /tmp/graduation-app.log
+      enabled: true
+      pattern: combined
+  compression:
+    enabled: true
+    min-response-size: 1
+
+spring:
+  data:
+    rest:
+      base-path: /api
+      
+  #jpa:
+#	database : MYSQL
+   # generate-ddl: true # Initialize the schema on startup.
+   # hibernate.ddl-auto: update # DDL mode. This is actually a shortcut for the "hibernate.hbm2ddl.auto" property. Default to "create-drop" when using an embedded database, "none" otherwise.
+   # open-in-view: false
+   # show-sql: true # Register OpenEntityManagerInViewInterceptor. Binds a JPA EntityManager to the thread for the entire processing of the request.
+   # properties:
+    #    hibernate:
+     #     jdbc.batch_size: 100
+      #    cache.use_second_level_cache: false
+       #   order_inserts: true
+        #  order_updates: true
+         # dialect : org.hibernate.dialect.MySQL5Dialect
+
+
+         
+    
+    
+  datasource:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: ${graduation.mysql.url}
+      username: ${graduation.mysql.username}
+      password: ${graduation.mysql.password}
+      
+  aop:
+    proxy-target-class: true
+    auto: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm
+    serialization: true
+    time-zone: GMT+0800
+
+    
+spring.h2.console.enabled: true
+spring.h2.console.path: /h2-console
+spring.h2.console.settings.webAllowOthers: true
+spring.h2.console.webAllowOthers: true
+
+
+
+mybatis:
+  mapperLocations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.san.graduation.domain
+  
+  #checkConfigLocation: true
+  #configLocation: classpath:mybatis-config.xml
+  #mybatis.config：mybatis-config.xml配置文件的路径
+  #mybatis.typeHandlersPackage：扫描typeHandlers的包
+  #mybatis.checkConfigLocation：检查配置文件是否存在
+  #mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE
+  
+pagehelper:
+  #offsetAsPageNum: true
+  #rowBoundsWithCount: true
+  helperDialect: mysql
+  #dialect: com.github.pagehelper.dialect.helper.MySqlDialect
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  
+mapper:
+    mappers:
+        - com.san.graduation.common.mybatis.CommonMapper
+    not-empty: false
+    identity: MYSQL
+  
+logging:
+  level:
+    root: debug
+    org.springframework.amqp.rabbit: info
+    org.springframework.cloud.netflix: debug
+    org.hibernate.jpa: debug
+    org.hibernate.ejb: debug
+    com.san.graduation: debug
+    java.sql: debug
+    tk.mybatis.mapper: debug
+    org.apache.ibatis: debug
+    tk.mybatis: TRACE
+
+endpoints:
+  enabled: true
+  sensitive: false
+  actuator:
+    enabled: true
+    sensitive: false
+  beans:
+    id: endpointsBean
+    sensitive: false
+  shutdown:
+    enabled: true
+    sensitive: false
+
+
+graduation:
+  javaMedoly:
+    classPattern: com.san.graduation.*.*
+  server:
+    port: 18002
+  instance-name: graduation-app
+  mysql:
+    # url: jdbc:mysql://121.196.217.22:3306/trmdata?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    # url: jdbc:mysql://127.0.0.1:3306/mdpdata?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+     url: jdbc:mysql://127.0.0.1:3306/smimdata?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+     username: smimopr
+     password: "!QAZ2wsx"
+
+
+  
+  
+  
+  
+  
+  
+
