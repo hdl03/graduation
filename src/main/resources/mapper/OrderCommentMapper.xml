@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.san.graduation.mapper.OrderCommentMapper">
+  <resultMap id="BaseResultMap" type="com.san.graduation.domain.OrderComment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="comment_no" jdbcType="VARCHAR" property="commentNo" />
+    <result column="comment_user_no" jdbcType="VARCHAR" property="commentUserNo" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="score" jdbcType="DECIMAL" property="score" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="recevier_user_no" jdbcType="VARCHAR" property="recevierUserNo" />
+  </resultMap>
+</mapper>

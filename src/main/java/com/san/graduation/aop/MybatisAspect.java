@@ -22,6 +22,7 @@ import java.util.List;
 @Aspect
 public class MybatisAspect {
 
+	// 在插入到数据 设置需要插入的数据
 	@Before("execution(* com.san.graduation.mapper..*.insert*(..))")
 	public void doBeforeInsert(JoinPoint joinPoint){
 		String className = joinPoint.getThis().toString();  
@@ -49,7 +50,8 @@ public class MybatisAspect {
         }  
 		
 	}
-	
+
+	// 在update 执行方法之前设置 ，需要更新到数据库的数据
 	@Before("execution(* com.shanlin.terminal.smim.mapper..*.update*(..))")
 	public void doBeforeUpdate(JoinPoint joinPoint){
 		String className = joinPoint.getThis().toString();  
@@ -72,11 +74,7 @@ public class MybatisAspect {
 	 * 设置表基本信息
 	 * 
 	 * setBaseEntityData:(这里用一句话描述这个方法的作用). <br/> 
-	 * (这里描述这个方法适用条件 – 可选).<br/> 
-	 * (这里描述这个方法的执行流程 – 可选).<br/> 
-	 * (这里描述这个方法的使用方法 – 可选).<br/> 
-	 * (这里描述这个方法的注意事项 – 可选).<br/> 
-	 * 
+	 *
 	 * @author huangdongliang
 	 * @param data 
 	 * @since JDK 1.8
@@ -96,6 +94,10 @@ public class MybatisAspect {
 			// isDelete概念(通过它可以做一些数据的假删除，也可用在其他场合)
 			if (baseEntity.getIsDelete() == null) {
 				baseEntity.setIsDelete(Constant.DELETE_SIGN_NORMAL);
+			}
+
+			if (baseEntity.getVersion() == null) {
+				baseEntity.setVersion(Constant.VERSION);
 			}
 		}
 	}

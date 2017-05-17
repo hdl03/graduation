@@ -9,22 +9,13 @@ import com.san.graduation.common.BaseBean;
  */
 
 public class UserDto extends BaseBean {
-    private String userNo;
-    private String mobileNo;
+    private String token;
 
-    public String getUserNo() {
-        return userNo;
+    public String getToken() {
+        return token;
     }
 
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
-
-    public String getMobileNo() {
-        return mobileNo;
-    }
-
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+    public void setToken(String token) {
+        this.token = token;
     }
 }

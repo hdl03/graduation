@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.san.graduation.mapper.UserDetailMapper">
+  <resultMap id="BaseResultMap" type="com.san.graduation.domain.UserDetail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="skill" jdbcType="VARCHAR" property="skill" />
+    <result column="total_task" jdbcType="INTEGER" property="totalTask" />
+    <result column="avg_score" jdbcType="DECIMAL" property="avgScore" />
+    <result column="photo" jdbcType="LONGVARBINARY" property="photo" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+</mapper>

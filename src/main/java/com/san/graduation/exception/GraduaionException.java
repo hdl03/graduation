@@ -9,25 +9,27 @@ import com.san.graduation.common.error.Error;
  * 往外面抛异常，都需要继承这个抽象类
  *
  */
-public abstract class MDPException extends RuntimeException {
-    public MDPException() {
+public abstract class GraduaionException extends RuntimeException {
+    public GraduaionException() {
     }
 
-    public MDPException(String message) {
+    public GraduaionException(String message) {
         super(message);
     }
 
-    public MDPException(String message, Throwable cause) {
+    public GraduaionException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public MDPException(Throwable cause) {
+    public GraduaionException(Throwable cause) {
         super(cause);
     }
 
-    public MDPException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public GraduaionException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+
+
 
     public abstract Error getError();
 

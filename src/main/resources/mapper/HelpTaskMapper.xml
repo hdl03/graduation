@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.san.graduation.mapper.HelpTaskMapper">
+  <resultMap id="BaseResultMap" type="com.san.graduation.domain.HelpTask">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="task_no" jdbcType="VARCHAR" property="taskNo" />
+    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent" />
+  </resultMap>
+</mapper>

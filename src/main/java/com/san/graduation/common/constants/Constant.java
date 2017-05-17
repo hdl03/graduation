@@ -12,5 +12,7 @@ public interface Constant {
 	public static final Boolean DELETE_SIGN_NORMAL = false;
 	/** 已删除。 */
 	public static final Boolean DELETE_SIGN_DELETE = true;
+
+	public static final Integer VERSION  = 0;
 	
 }

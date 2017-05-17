@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.san.graduation.mapper.UserTokenMapper">
+  <resultMap id="BaseResultMap" type="com.san.graduation.domain.UserToken">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="expire_time" jdbcType="BIGINT" property="expireTime" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+  </resultMap>
+
+  <sql id="baseSql" > token.expire_time,token.last_time,token.user_no,token.token</sql>
+
+  <select id="findByUserNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+     SELECT <include refid="baseSql"/>  FROM user_token token WHERE token.user_no = #{userNo}
+  </select>
+
+
+</mapper>

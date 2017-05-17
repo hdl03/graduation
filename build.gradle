@@ -4,45 +4,32 @@ buildscript {
 	}
 	repositories {
 		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-//		mavenCentral()
-//		maven { url "https://repo.spring.io/snapshot" }
-//		maven { url "https://repo.spring.io/milestone" }
-		//maven { url "http://nexus.wanda-group.net/repository/spring-io-snapshot/" }
-		//maven { url "http://nexus.wanda-group.net/repository/spring-io-milestone/"}
-		//maven { url "http://nexus.wanda-group.net/repository/spring-io-release/" }
-		//maven { url "http://nexus.wanda-group.net/repository/maven-central/" }
-//		maven { url "http://nexus.wanda-group.net/repository/maven-public/" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath "gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2.1"
 	}
-//    plugins {
-//        id "com.gorylenko.gradle-git-properties" version "1.4.6"
-//    }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'com.gorylenko.gradle-git-properties'
-//apply plugin: 'org.sonarqube'
-apply plugin: "jacoco"
 
 jar {
 	baseName = 'graduation-app'
 	version = '0.0.1-SNAPSHOT'
 }
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-springBoot  {
+
+/*springBoot  {
     buildInfo()
-}
+}*/
 
 repositories {
 	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+
 }
 configurations {
     compile.exclude module: "spring-boot-starter-tomcat"
@@ -52,78 +39,37 @@ configurations {
 
 
 dependencies {
-	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '1.5.2.RELEASE'
-//    compile group: 'org.pacesys', name: 'openstack4j-core', version: '3.0.3'
-//    compile group: 'org.pacesys.openstack4j.connectors', name: 'openstack4j-httpclient', version: '3.0.3'
- 
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
-//	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.8.7'
+
 
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.8.5'
     compile group: 'org.json', name: 'json'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
-    
-//    compile('org.springframework.cloud:spring-cloud-starter-config')
-//    compile('org.springframework.cloud:spring-cloud-starter-eureka')
-////    compile "org.springframework.cloud:spring-cloud-starter-zipkin"
-
-	//compile('org.springframework.boot:spring-boot-starter-parent')
     compile('org.springframework.cloud:spring-cloud-starter-feign')
-    
-//    compile('org.springframework.cloud:spring-cloud-starter-hystrix')
-////    compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')
-//    compile('org.springframework.cloud:spring-cloud-starter-ribbon')
-////    compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
-////    compile('org.springframework.cloud:spring-cloud-starter-sleuth')
-//    compile('org.springframework.cloud:spring-cloud-starter-zipkin')
-
-
-//    compile('org.springframework.cloud:spring-cloud-starter-turbine')
-//    compile('org.springframework.cloud:spring-cloud-starter-turbine-stream')
-//    compile('org.springframework.boot:spring-boot-starter-hateoas')
-
-    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0")
     compile("org.mybatis.generator:mybatis-generator-core:1.3.5")
-    
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-configuration-processor")
-    
-//    compile("org.springframework.boot:spring-boot-starter-amqp")
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
-//    compile "io.dropwizard.metrics:metrics-core"
     compile 'org.apache.commons:commons-dbcp2:2.1.1'
     compile 'net.bull.javamelody:javamelody-core:1.59.0'
     compile("org.springframework.boot:spring-boot-starter-undertow")
     compile('org.springframework.boot:spring-boot-starter-data-rest')
     compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.boot:spring-boot-starter-actuator')
-//    compile('org.springframework.amqp:spring-rabbit:1.6.5.RELEASE')
-//    compile 'com.github.davidb:metrics-influxdb:0.9.3'
-
     compile('org.jolokia:jolokia-core')
     compile('org.springframework.retry:spring-retry')
     compile('mysql:mysql-connector-java:6.0.5')
-//    compile 'com.h2database:h2:1.4.193'
-
     compile 'org.apache.commons:commons-lang3:3.5'
-    
-    //compile 'tk.mybatis:mapper:3.4.0'
     compile 'tk.mybatis:mapper-spring-boot-starter:1.1.1'
     compile 'com.github.pagehelper:pagehelper-spring-boot-starter:1.1.1'
     compile 'com.alibaba:fastjson:1.2.31'
-
-    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.3.0.RELEASE'
-    // https://mvnrepository.com/artifact/com.netflix.feign/feign-jackson
-    //compile group: 'com.netflix.feign', name: 'feign-jackson', version: '8.18.0'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile 'com.h2database:h2:1.4.193'
     testCompile 'org.springframework.boot:spring-boot-starter-tomcat'
-    
+
     mybatisGenerate 'org.mybatis.generator:mybatis-generator-core:1.3.5'
-    mybatisGenerate 'mysql:mysql-connector-java:5.1.38'
+    mybatisGenerate 'mysql:mysql-connector-java:6.0.5'
     mybatisGenerate 'tk.mybatis:mapper:3.4.0'
  
 }
@@ -134,6 +80,61 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
     }
 }
+
+
+
+def getDbProperties = {
+    def properties = new Properties()
+    file("src/main/resources/mybatis/db-mysql.properties").withInputStream { inputStream ->
+        properties.load(inputStream)
+    }
+    properties
+}
+
+task mybatisGenerate {
+    doLast {
+        def properties = getDbProperties()
+
+        ant.properties['targetProject'] = projectDir.path
+
+        ant.properties['driverClass'] = properties.getProperty("jdbc.driverClassName")
+        ant.properties['connectionURL'] = properties.getProperty("jdbc.url")
+        ant.properties['userId'] = properties.getProperty("jdbc.user")
+        ant.properties['password'] = properties.getProperty("jdbc.pass")
+
+        ant.properties['src_main_java'] = sourceSets.main.java.srcDirs[0].path
+        ant.properties['src_main_resources'] = sourceSets.main.resources.srcDirs[0].path
+
+        ant.properties['modelPackage'] = properties.getProperty("package.model")
+        ant.properties['mapperPackage'] = properties.getProperty("package.mapper")
+        ant.properties['sqlMapperPackage'] = properties.getProperty("package.xml")
+
+        //println(message: 'test :' + configurations.mybatisGenerate.asPath)
+
+        ant.taskdef(
+                name: 'mbgenerator',
+                classname: 'org.mybatis.generator.ant.GeneratorAntTask',
+                classpath: configurations.mybatisGenerate.asPath
+        )
+        ant.mbgenerator(overwrite: true,
+                configfile: 'src/main/resources/mybatis/generatorConfig.xml', verbose: true) {
+            propertyset {
+                propertyref(name: 'targetProject')
+                propertyref(name: 'userId')
+                propertyref(name: 'driverClass')
+                propertyref(name: 'connectionURL')
+                propertyref(name: 'password')
+                propertyref(name: 'src_main_java')
+                propertyref(name: 'src_main_resources')
+                propertyref(name: 'modelPackage')
+                propertyref(name: 'mapperPackage')
+                propertyref(name: 'sqlMapperPackage')
+            }
+        }
+
+    }
+}
+
 
 
 
