@@ -1,5 +1,6 @@
 package com.san.graduation.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.san.graduation.common.BaseBean;
 
 /**
@@ -9,6 +10,7 @@ import com.san.graduation.common.BaseBean;
  */
 
 public class UserDto extends BaseBean {
+    @JsonProperty("x-grad-session-token")
     private String token;
 
     public String getToken() {

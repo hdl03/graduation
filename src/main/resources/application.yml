@@ -82,15 +82,13 @@ mapper:
   
 logging:
   level:
-    root: debug
-    org.springframework.amqp.rabbit: info
-    org.springframework.cloud.netflix: debug
-    org.hibernate.jpa: debug
-    org.hibernate.ejb: debug
-    com.san.graduation: debug
-    java.sql: debug
-    tk.mybatis.mapper: debug
-    org.apache.ibatis: debug
+    root: ${graduation.logger.level}
+    org.springframework.amqp.rabbit: ${graduation.logger.level}
+    org.springframework.cloud.netflix: ${graduation.logger.level}
+    com.san.graduation: ${graduation.logger.level}
+    java.sql: ${graduation.logger.level}
+    tk.mybatis.mapper: ${graduation.logger.level}
+    org.apache.ibatis: ${graduation.logger.level}
     tk.mybatis: TRACE
 
 endpoints:
@@ -122,6 +120,8 @@ graduation:
   login:
     expireTime: 300000
     checkUrl:
+  logger:
+    level: debug
 
 
 

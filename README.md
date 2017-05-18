@@ -58,25 +58,9 @@
     * 接口调用时必须明确各个接口响应的状态(区分好状态[通信状态和最终业务实际状态],并做正确的业务逻辑处理)
     * 接口变动及升级请做好对应的文档变更并及时同步至Git上,保证对应接口和文档中的一致性
 
-### 消除IDE的警告
-    * 没有用到的变量、方法去掉
-    * 没有用到注释请直接去掉
-    * List,Map 请指定具体的类型,如List<String>,Map<String,Integer>
-    * 序列化要求:通过接口传递的对象必须序列化,且务必加上serialVersionUID:
-        （1）setting->Inspections->Serialization issues，将serialzable class without "serialVersionUID"打上勾
-        （2）将光标放到类名上，按atl＋enter键，就会提示生成serialVersionUID了。
-
-## 类注释模板
-    * 类注释IDEA开发工具添加方式为：步骤：settings-->file and code Templates-->选择incudes 进行配置
-
-```
-/**
- * 类注释
- * @author ${USER}
- * @version 1.0.0 createTime: ${DATE} ${TIME}
- * @see 链接到其他资源
- * @since 1.0
- */
- ```
+### 监控界面查看
+     http://119.23.232.141:18002/monitoring
+### 接口文档
+    http://rapapi.org/org/index.do
  
 

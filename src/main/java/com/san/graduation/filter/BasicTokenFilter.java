@@ -95,7 +95,7 @@ public class BasicTokenFilter implements Filter {
             throws IOException {
 
         // 获取请求头的token信息
-        String token = httpServletRequest.getHeader("x-grad-session-token");
+        String token = httpServletRequest.getHeader(Constant.TOKEN);
         Logger.info(this, "toke is " + token + " , flag is " + flag);
         // 没有带token　
         if (StringUtils.isBlank(token) && flag) {
