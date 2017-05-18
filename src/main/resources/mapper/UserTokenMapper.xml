@@ -5,16 +5,21 @@
     <!--
       WARNING - @mbg.generated
     -->
+    <result column="id" jdbcType="BIGINT" property="id"/>
     <result column="expire_time" jdbcType="BIGINT" property="expireTime" />
     <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
     <result column="token" jdbcType="VARCHAR" property="token" />
     <result column="user_no" jdbcType="VARCHAR" property="userNo" />
   </resultMap>
 
-  <sql id="baseSql" > token.expire_time,token.last_time,token.user_no,token.token</sql>
+  <sql id="baseSql" > token.expire_time,token.last_time,token.user_no,token.token,token.id</sql>
 
   <select id="findByUserNo" resultMap="BaseResultMap" parameterType="java.lang.String">
      SELECT <include refid="baseSql"/>  FROM user_token token WHERE token.user_no = #{userNo}
+  </select>
+
+  <select id="findByToken" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT <include refid="baseSql"/>  FROM user_token token WHERE token.token = #{token}
   </select>
 
 

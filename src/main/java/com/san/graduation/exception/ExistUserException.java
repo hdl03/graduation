@@ -5,7 +5,7 @@ import com.san.graduation.common.error.Error;
 /**
  * Created by shanlin on 2017/5/17.
  */
-public class ExistUserException extends GraduaionException{
+public class ExistUserException extends GraduaionException {
     private String mobileNo;
 
     public ExistUserException(String mobileNo) {
@@ -27,6 +27,6 @@ public class ExistUserException extends GraduaionException{
 
     @Override
     public String getErrorMessage() {
-        return String.format(Error.EXIST_USER.getMessage(),this.mobileNo);
+        return String.format(getError().getMessage(), this.mobileNo);
     }
 }

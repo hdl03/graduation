@@ -14,4 +14,6 @@ public interface UserTokenMapper extends CommonMapper<UserToken> {
 
     public UserToken findByUserNo(String userNo);
 
+    public UserToken findByToken(String token);
+
 }

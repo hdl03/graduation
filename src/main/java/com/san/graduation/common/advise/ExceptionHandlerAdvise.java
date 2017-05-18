@@ -23,7 +23,7 @@ public class ExceptionHandlerAdvise {
     @Order(500)
     public ResponseEntity<BaseResponse> handleWandaException(GraduaionException ex) {
         // TODO
-        return new ResponseEntity<BaseResponse>(BaseResponse.fail(ex.getError().getCode(), ex.getError().getMessage()), HttpStatus.OK);
+        return new ResponseEntity<BaseResponse>(BaseResponse.fail(ex.getError().getCode(), ex.getErrorMessage()), HttpStatus.OK);
     }
 
     @ExceptionHandler(RuntimeException.class)

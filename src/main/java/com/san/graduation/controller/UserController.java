@@ -36,7 +36,7 @@ public class UserController {
     @RequestMapping(value = "register/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResponse registerUser(@RequestBody UserParam userParam) {
-        Logger.info(this, "init register : " + userParam);
+        Logger.info(this, "init register : ");
         User user = new User();
         BeanUtils.copyProperties(userParam, user, "userNo");
         userService.insert(user);
@@ -54,7 +54,7 @@ public class UserController {
     @RequestMapping(value = "login/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResponse loginUser(@RequestBody UserParam userParam) {
-        Logger.info(this, "init loginUser : " + userParam);
+        Logger.info(this, "init loginUser : ");
         UserDto userDto = userService.findByMobileNoAndPassword(userParam.getMobileNo(), userParam.getPassword());
         UserResult userResult = UserResult.succcess();
         userResult.setUserDto(userDto);

@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.san.graduation.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.san.graduation.domain.User">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="mobile_no" jdbcType="VARCHAR" property="mobileNo" />
-    <result column="province" jdbcType="VARCHAR" property="province" />
-    <result column="city" jdbcType="VARCHAR" property="city" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="school" jdbcType="VARCHAR" property="school" />
-    <result column="major" jdbcType="VARCHAR" property="major" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.san.graduation.domain.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="mobile_no" jdbcType="VARCHAR" property="mobileNo"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="school" jdbcType="VARCHAR" property="school"/>
+        <result column="major" jdbcType="VARCHAR" property="major"/>
+    </resultMap>
 
+    <sql id="baseSql">user.user_no,user.mobile_no,user.province,user.city,user.address,user.school,user.major,user.user_name </sql>
 
     <update id="deleteByUserNo" parameterType="java.lang.String">
         UPDATE user set is_delete = 1 where user_no = #{userNo}
     </update>
 
     <select id="findByUserNo" parameterType="java.lang.String" resultMap="BaseResultMap">
-        SELECT user_no,mobile_no,province,city,address,school,major,user_name from user WHERE  is_delete = 0 and user_no = #{userNo}
+        SELECT <include refid="baseSql"/> from user user WHERE  user.is_delete = 0 and user.user_no = #{userNo}
     </select>
 
     <select id="findByMobileNoAndPassword" resultMap="BaseResultMap">
-        SELECT user_no,mobile_no,province,city,address,school,major,user_name from user WHERE  is_delete = 0 and
-        mobile_no = #{mobileNo} and password =#{password}
+        SELECT <include refid="baseSql"/> from user user WHERE  user.is_delete = 0 and
+        user.mobile_no = #{mobileNo} and user.password =#{password}
     </select>
 
     <select id="findByMobileNo" parameterType="java.lang.String" resultMap="BaseResultMap">
-        SELECT user_no,mobile_no,province,city,address,school,major,user_name from user WHERE  is_delete = 0 and mobile_no = #{userNo}
+        SELECT <include refid="baseSql"/> from user user WHERE  user.is_delete = 0 and user.mobile_no = #{userNo}
     </select>
 
 </mapper>

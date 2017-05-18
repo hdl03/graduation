@@ -7,7 +7,7 @@ import com.san.graduation.common.BaseParam;
  */
 
 public class UserParam extends BaseParam {
-    private String userNo; // 用户编号
+    //private String userNo; // 用户编号
     private String password;// 密码
     private String mobileNo;// 手机号码
     private String province;// 省
@@ -17,13 +17,13 @@ public class UserParam extends BaseParam {
     private String major;// 专业
     private String userName;// 用户名
 
-    public String getUserNo() {
+   /* public String getUserNo() {
         return userNo;
     }
 
     public void setUserNo(String userNo) {
         this.userNo = userNo;
-    }
+    }*/
 
     public String getPassword() {
         return password;
@@ -88,4 +88,5 @@ public class UserParam extends BaseParam {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 }

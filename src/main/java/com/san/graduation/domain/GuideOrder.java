@@ -1,9 +1,11 @@
 package com.san.graduation.domain;
 
+import com.san.graduation.common.BaseEntity;
+
 import javax.persistence.*;
 
 @Table(name = "guide_order")
-public class GuideOrder {
+public class GuideOrder extends BaseEntity {
     /**
      * 发帖者
      */

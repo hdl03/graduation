@@ -1,10 +1,12 @@
 package com.san.graduation.domain;
 
+import com.san.graduation.common.BaseEntity;
+
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "order_comment")
-public class OrderComment {
+public class OrderComment extends BaseEntity {
     /**
      * 评论编号
      */

@@ -1,10 +1,12 @@
 package com.san.graduation.domain;
 
+import com.san.graduation.common.BaseEntity;
+
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "user_token")
-public class UserToken {
+public class UserToken extends BaseEntity {
     @Column(name = "expire_time")
     private Long expireTime;
 

@@ -1,7 +1,9 @@
 package com.san.graduation.service.impl;
 
+import com.san.graduation.common.error.Error;
 import com.san.graduation.common.util.DateUtil;
 import com.san.graduation.common.util.Logger;
+import com.san.graduation.common.util.Md5Utils;
 import com.san.graduation.common.util.UUIDUtils;
 import com.san.graduation.domain.User;
 import com.san.graduation.domain.UserToken;
@@ -32,13 +34,16 @@ public class UserService {
     public int insert(User user) {
         // 判断是否是否注册
         // 用户编号，手动设置使用UUID
+        Logger.info(this,"init user ");
         User userMap = userMapper.findByMobileNo(user.getMobileNo());
-        if (null == userMap) {
+        if (null != userMap) {
             //用户已经存在
             Logger.error(this, "用户已经存在");
             throw new ExistUserException(user.getMobileNo());
         }
         user.setUserNo(UUIDUtils.getInstance().getUniqueId());
+        // 用户注册加密
+        user.setPassword(Md5Utils.getMd5(user.getPassword()));
         return userMapper.insert(user);
     }
 
@@ -68,7 +73,8 @@ public class UserService {
 
 
     public UserDto findByMobileNoAndPassword(String mobile, String password) {
-        User user = userMapper.findByMobileNoAndPassword(mobile, password);
+        String passwordMD5  = Md5Utils.getMd5(password);
+        User user = userMapper.findByMobileNoAndPassword(mobile, passwordMD5);
         Logger.info(this, "findByMobileNo " + user);
         if (null == user) {
             // 记入不存在抛出错误的用户名或密码
@@ -80,6 +86,7 @@ public class UserService {
         String token = UUIDUtils.getInstance().getUniqueId();
         if (null != userToken) {            ;
             userToken.setToken(token);
+            userToken.setLastTime(DateUtil.getDate());
             userToken.setExpireTime(System.currentTimeMillis() + expireTime);
             userTokenMapper.updateByPrimaryKey(userToken);
         } else {
@@ -88,7 +95,7 @@ public class UserService {
             userToken.setExpireTime(System.currentTimeMillis() + expireTime);
             userToken.setLastTime(DateUtil.getDate());
             userToken.setUserNo(user.getUserNo());
-            userTokenMapper.updateByPrimaryKey(userToken);
+            userTokenMapper.insert(userToken);
         }
 
         // 返回token信息

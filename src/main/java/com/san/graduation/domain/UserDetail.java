@@ -1,9 +1,11 @@
 package com.san.graduation.domain;
 
+import com.san.graduation.common.BaseEntity;
+
 import javax.persistence.*;
 
 @Table(name = "user_detail")
-public class UserDetail {
+public class UserDetail extends BaseEntity {
     /**
      * 技能
      */

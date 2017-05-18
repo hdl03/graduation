@@ -121,6 +121,8 @@ graduation:
      password: graduation
   login:
     expireTime: 300000
+    checkUrl:
+
 
 
 

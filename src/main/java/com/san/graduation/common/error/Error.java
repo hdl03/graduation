@@ -9,8 +9,12 @@ package com.san.graduation.common.error;
 public enum Error {
     SUCCESS(ErrorCode.SUUCCESS, "success"),
     DOEXCEPTION(ErrorCode.DO_EXCEPTION, "操作异常"),
-    EXIST_USER(ErrorCode.EXIST_USER, "该[%s]用户已经存在"),
-    WRANG_USER_OR_PASS(ErrorCode.WRANG_USER_OR_PASS,"错误的用户名或密码");
+    EXIST_USER(ErrorCode.EXIST_USER, "该 %s 用户已经存在"),
+    WRANG_USER_OR_PASS(ErrorCode.WRANG_USER_OR_PASS,"错误的用户名或密码"),
+    OUT_TIME_TOKEN(ErrorCode.OUT_TIME_TOKEN,"token 超时"),
+    NOT_EXIST_TOKEN(ErrorCode.NOT_EXIST_TOKEN,"token 不存在"),
+    NOT_EXIST_USER(ErrorCode.NOT_EXIST_USER,"用户不存在")
+    ;
 
 
     private String code;
