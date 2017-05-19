@@ -4,11 +4,10 @@ server:
     accesslog:
       dir: /tmp/graduation-app.log
       enabled: true
-      pattern: combined
+      pattern: "\"%{i,Trace-Id}\"  %h %l %u %t \"%r\" %s %b \"%{i,Referer}\" \"%{i,User-Agent}\""
   compression:
     enabled: true
     min-response-size: 1
-
 spring:
   data:
     rest:
