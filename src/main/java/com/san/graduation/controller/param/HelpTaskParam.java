@@ -9,16 +9,7 @@ import com.san.graduation.common.BaseParam;
 public class HelpTaskParam extends BaseParam{
     private String taskTitle; //帖子标题
     private String tag; //帖子标签
-    private String userNo; //唯一标识用户
     private String taskContent; //帖子内容
-
-    public String getUserNo() {
-        return userNo;
-    }
-
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
 
     public String getTaskContent() {
         return taskContent;

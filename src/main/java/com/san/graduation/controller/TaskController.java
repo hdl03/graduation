@@ -2,6 +2,7 @@ package com.san.graduation.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.san.graduation.common.BaseResponse;
+import com.san.graduation.common.UserContext;
 import com.san.graduation.common.util.Logger;
 import com.san.graduation.controller.param.GuideTaskParam;
 import com.san.graduation.controller.param.HelpTaskParam;
@@ -44,6 +45,7 @@ public class TaskController {
         Logger.info(this,"publish guide task：");
         GuideTask task = new GuideTask();
         BeanUtils.copyProperties(param,task);
+        task.setUserNo(UserContext.getCurrentUserNo().get());
         guideTaskService.insert(task);
         return GuideTaskResult.success();
     }
@@ -54,6 +56,7 @@ public class TaskController {
         Logger.info(this,"publish Help task：");
         HelpTask task = new HelpTask();
         BeanUtils.copyProperties(param,task);
+        task.setUserNo(UserContext.getCurrentUserNo().get());
         helpTaskService.insert(task);
         return HelpTaskResult.success();
     }

@@ -118,7 +118,7 @@ graduation:
      password: graduation
   login:
     expireTime: 300000
-    checkUrl:
+    checkUrl: /publish/guide_task,/publish/help_task
   logger:
     level: debug
 
