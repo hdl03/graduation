@@ -15,6 +15,7 @@ public interface ErrorCode {
 	public String OUT_TIME_TOKEN = "100003"; // token 超时
 	public String NOT_EXIST_TOKEN = "100004"; // token  不存在
 	public String NOT_EXIST_USER = "100005"; // 用户不存在
+	public String PARAMS_ERROR = "100006"; //参数错误
 
 
 

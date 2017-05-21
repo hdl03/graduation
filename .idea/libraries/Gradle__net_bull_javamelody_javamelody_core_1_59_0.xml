@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.bull.javamelody:javamelody-core:1.59.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.bull.javamelody/javamelody-core/1.59.0/a62546ae063493041fe55b3b323f88ae06151e9a/javamelody-core-1.59.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.bull.javamelody/javamelody-core/1.59.0/91adc72d80cebb811e393243bc497fccba173973/javamelody-core-1.59.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

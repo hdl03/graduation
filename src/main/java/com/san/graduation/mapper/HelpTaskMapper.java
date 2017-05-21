@@ -2,7 +2,9 @@ package com.san.graduation.mapper;
 
 import com.san.graduation.common.mybatis.CommonMapper;
 import com.san.graduation.domain.HelpTask;
-import tk.mybatis.mapper.common.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  *
@@ -10,4 +12,5 @@ import tk.mybatis.mapper.common.Mapper;
  */
 
 public interface HelpTaskMapper extends CommonMapper<HelpTask> {
+    List<HelpTask> findByKeyWord(@Param("keyWord")String keyWord);
 }

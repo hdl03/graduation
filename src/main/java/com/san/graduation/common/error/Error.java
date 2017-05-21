@@ -13,7 +13,8 @@ public enum Error {
     WRANG_USER_OR_PASS(ErrorCode.WRANG_USER_OR_PASS,"错误的用户名或密码"),
     OUT_TIME_TOKEN(ErrorCode.OUT_TIME_TOKEN,"token 超时"),
     NOT_EXIST_TOKEN(ErrorCode.NOT_EXIST_TOKEN,"token 不存在"),
-    NOT_EXIST_USER(ErrorCode.NOT_EXIST_USER,"用户不存在")
+    NOT_EXIST_USER(ErrorCode.NOT_EXIST_USER,"用户不存在"),
+    PARAMS_ERROR(ErrorCode.PARAMS_ERROR,"参数错误")
     ;
 
 
