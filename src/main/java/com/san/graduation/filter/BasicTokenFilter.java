@@ -13,12 +13,15 @@ import com.san.graduation.domain.UserToken;
 import com.san.graduation.mapper.UserMapper;
 import com.san.graduation.mapper.UserTokenMapper;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.sleuth.Span;
 import org.springframework.http.MediaType;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -60,6 +63,12 @@ public class BasicTokenFilter implements Filter {
         String url = httpServletRequest.getServletPath();
         Logger.debug(this, "  url is " + url);
         String method = httpServletRequest.getMethod();
+
+        Object object = MDC.get(Span.TRACE_ID_NAME);
+        String traceId = (object == null ? "" : object.toString());
+//        Cookie cookie = new Cookie(Constant.TRACEID,tranceId);
+//        httpServletResponse.addCookie(cookie);
+        httpServletResponse.setHeader(Constant.TRACEID,traceId);
         try {
             if (!Constant.OPTIONS_METHOD.equals(method)) {
                 // 匹配到，需要带token 的url

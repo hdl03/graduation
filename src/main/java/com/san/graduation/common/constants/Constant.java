@@ -22,4 +22,6 @@ public interface Constant {
 
     public static final String TOKEN = "x-grad-session-token";
 
+    public static final String TRACEID = "Trace-Id";
+
 }
