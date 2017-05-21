@@ -32,6 +32,7 @@
     <orderEntry type="library" name="Gradle: tk.mybatis:mapper-spring-boot-starter:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.github.pagehelper:pagehelper-spring-boot-starter:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.alibaba:fastjson:1.2.31" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-starter-sleuth:1.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.h2database:h2:1.4.193" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.8.4" level="project" />
@@ -71,6 +72,8 @@
     <orderEntry type="library" name="Gradle: tk.mybatis:mapper:3.4.0" level="project" />
     <orderEntry type="library" name="Gradle: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.github.pagehelper:pagehelper:5.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.4.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-sleuth-core:1.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test-autoconfigure:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.jayway.jsonpath:json-path:2.2.0" level="project" />
@@ -92,7 +95,6 @@
     <orderEntry type="library" name="Gradle: org.jvnet:animal-sniffer-annotation:1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.21" level="project" />
     <orderEntry type="library" name="Gradle: com.netflix.hystrix:hystrix-core:1.5.6" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.netflix.ribbon:ribbon:2.2.0" level="project" />
     <orderEntry type="library" name="Gradle: com.netflix.ribbon:ribbon-core:2.2.0" level="project" />
     <orderEntry type="library" name="Gradle: com.netflix.ribbon:ribbon-httpclient:2.2.0" level="project" />
@@ -117,11 +119,12 @@
     <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.21" level="project" />
     <orderEntry type="library" name="Gradle: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.github.jsqlparser:jsqlparser:0.9.5" level="project" />
+    <orderEntry type="library" name="Gradle: org.aspectj:aspectjweaver:1.8.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.aspectj:aspectjrt:1.8.9" level="project" />
     <orderEntry type="library" name="Gradle: net.minidev:json-smart:2.2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.bouncycastle:bcpkix-jdk15on:1.55" level="project" />
     <orderEntry type="library" name="Gradle: org.hdrhistogram:HdrHistogram:2.1.9" level="project" />
-    <orderEntry type="library" name="Gradle: org.aspectj:aspectjweaver:1.8.9" level="project" />
     <orderEntry type="library" name="Gradle: com.netflix.ribbon:ribbon-transport:2.2.0" level="project" />
     <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Gradle: io.reactivex:rxnetty:0.4.9" level="project" />
