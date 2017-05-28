@@ -6,10 +6,12 @@ import com.san.graduation.common.util.Logger;
 import com.san.graduation.common.util.Md5Utils;
 import com.san.graduation.common.util.UUIDUtils;
 import com.san.graduation.domain.User;
+import com.san.graduation.domain.UserDetail;
 import com.san.graduation.domain.UserToken;
 import com.san.graduation.dto.UserDto;
 import com.san.graduation.exception.ExistUserException;
 import com.san.graduation.exception.WrangUserOrPassException;
+import com.san.graduation.mapper.UserDetailMapper;
 import com.san.graduation.mapper.UserMapper;
 import com.san.graduation.mapper.UserTokenMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,8 @@ public class UserService {
     private UserTokenMapper userTokenMapper;
     @Value("${graduation.login.expireTime}")
     private Long expireTime;
+    @Autowired
+    private UserDetailMapper userDetailMapper;
 
     public int insert(User user) {
         // 判断是否是否注册
@@ -41,9 +45,15 @@ public class UserService {
             Logger.error(this, "用户已经存在");
             throw new ExistUserException(user.getMobileNo());
         }
-        user.setUserNo(UUIDUtils.getInstance().getUniqueId());
+        String userNo = UUIDUtils.getInstance().getUniqueId();
+        user.setUserNo(userNo);
         // 用户注册加密
         user.setPassword(Md5Utils.getMd5(user.getPassword()));
+        //用户详细信息
+        UserDetail userDetail = new UserDetail();
+        userDetail.setUserNo(userNo);
+        userDetailMapper.insertSelective(userDetail);
+
         return userMapper.insert(user);
     }
 
