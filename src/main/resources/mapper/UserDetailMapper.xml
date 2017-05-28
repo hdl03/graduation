@@ -8,8 +8,8 @@
     <result column="skill" jdbcType="VARCHAR" property="skill" />
     <result column="total_task" jdbcType="INTEGER" property="totalTask" />
     <result column="avg_score" jdbcType="DECIMAL" property="avgScore" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
     <result column="photo" jdbcType="LONGVARBINARY" property="photo" />
     <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
-    <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
   </resultMap>
 </mapper>

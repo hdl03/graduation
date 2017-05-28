@@ -1,7 +1,5 @@
 package com.san.graduation.domain;
 
-import com.san.graduation.common.BaseEntity;
-
 import javax.persistence.*;
 
 @Table(name = "user_detail")
@@ -24,6 +22,12 @@ public class UserDetail extends BaseEntity {
     private Long avgScore;
 
     /**
+     * 用户编号
+     */
+    @Column(name = "user_no")
+    private String userNo;
+
+    /**
      * 图片
      */
     private byte[] photo;
@@ -32,8 +36,6 @@ public class UserDetail extends BaseEntity {
      * 介绍
      */
     private String introduction;
-
-    private String userNo;// 用户编号
 
     /**
      * 获取技能
@@ -90,6 +92,24 @@ public class UserDetail extends BaseEntity {
     }
 
     /**
+     * 获取用户编号
+     *
+     * @return user_no - 用户编号
+     */
+    public String getUserNo() {
+        return userNo;
+    }
+
+    /**
+     * 设置用户编号
+     *
+     * @param userNo 用户编号
+     */
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
+
+    /**
      * 获取图片
      *
      * @return photo - 图片
@@ -123,13 +143,5 @@ public class UserDetail extends BaseEntity {
      */
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public String getUserNo() {
-        return userNo;
-    }
-
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
     }
 }
