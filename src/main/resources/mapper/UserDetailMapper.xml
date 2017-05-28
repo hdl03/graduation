@@ -10,5 +10,6 @@
     <result column="avg_score" jdbcType="DECIMAL" property="avgScore" />
     <result column="photo" jdbcType="LONGVARBINARY" property="photo" />
     <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
   </resultMap>
 </mapper>

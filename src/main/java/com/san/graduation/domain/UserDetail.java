@@ -33,6 +33,8 @@ public class UserDetail extends BaseEntity {
      */
     private String introduction;
 
+    private String userNo;// 用户编号
+
     /**
      * 获取技能
      *
@@ -121,5 +123,13 @@ public class UserDetail extends BaseEntity {
      */
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
     }
 }
