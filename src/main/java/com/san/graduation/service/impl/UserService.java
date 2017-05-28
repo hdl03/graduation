@@ -5,11 +5,13 @@ import com.san.graduation.common.util.DateUtil;
 import com.san.graduation.common.util.Logger;
 import com.san.graduation.common.util.Md5Utils;
 import com.san.graduation.common.util.UUIDUtils;
+import com.san.graduation.controller.param.UpdateUserParam;
 import com.san.graduation.domain.User;
 import com.san.graduation.domain.UserDetail;
 import com.san.graduation.domain.UserToken;
 import com.san.graduation.dto.UserDto;
 import com.san.graduation.exception.ExistUserException;
+import com.san.graduation.exception.ParamsException;
 import com.san.graduation.exception.WrangUserOrPassException;
 import com.san.graduation.mapper.UserDetailMapper;
 import com.san.graduation.mapper.UserMapper;
@@ -114,5 +116,14 @@ public class UserService {
         return userDto;
 
 
+    }
+
+    /**
+     * 更新用户信息
+     */
+    public int updateUserInfoByUserNo(UpdateUserParam param){
+        if(param == null){
+            throw new ParamsException();
+        }
     }
 }
