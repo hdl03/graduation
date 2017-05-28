@@ -2,6 +2,7 @@ package com.san.graduation.controller;
 
 import com.san.graduation.common.BaseResponse;
 import com.san.graduation.common.util.Logger;
+import com.san.graduation.controller.param.UpdateUserParam;
 import com.san.graduation.controller.param.UserParam;
 import com.san.graduation.controller.result.UserResult;
 import com.san.graduation.domain.User;
@@ -61,4 +62,16 @@ public class UserController {
         return userResult;
     }
 
+    /**
+     * 更新用户信息
+     */
+    @RequestMapping(value = "update/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public BaseResponse updateUserInfo(@RequestBody UpdateUserParam updateUserParam) {
+        Logger.info(this, "init updateUserInfo : ");
+//        UserDto userDto = userService.findByMobileNoAndPassword(userParam.getMobileNo(), userParam.getPassword());
+        UserResult userResult = UserResult.succcess();
+//        userResult.setUserDto(userDto);
+        return userResult;
+    }
 }
