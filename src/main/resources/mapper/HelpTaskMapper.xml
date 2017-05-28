@@ -11,13 +11,16 @@
     <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
     <result column="user_no" jdbcType="VARCHAR" property="userNo" />
     <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="max_number" jdbcType="INTEGER" property="maxNumber" />
+    <result column="already_number" jdbcType="INTEGER" property="alreadyNumber" />
+    <result column="task_status" jdbcType="INTEGER" property="taskStatus" />
     <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent" />
   </resultMap>
 
   <sql id="baseSql">task_title,task_content,tag,task_no,user_no,created_at,created_by </sql>
 
   <select id="findByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT <include refid="baseSql"/> from help_task WHERE  is_delete = 0
+    SELECT <include refid="baseSql" /> from help_task WHERE  is_delete = 0
     <if test="null!=keyWord"> or task_title like concat('%',#{keyWord},'%')</if>
     <if test="null!=keyWord"> or task_content like concat('%',#{keyWord},'%')</if>
     <if test="null!=keyWord"> or tag like concat('%',#{keyWord},'%')</if>
