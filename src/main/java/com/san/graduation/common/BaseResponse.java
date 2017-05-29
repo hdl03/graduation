@@ -40,6 +40,7 @@ public class BaseResponse extends BaseBean {
         return new BaseResponse(Error.SUCCESS.getCode(), Error.SUCCESS.getMessage());
     }
 
+
     public static BaseResponse fail(String code, String message) {
         return new BaseResponse(code, message);
     }

@@ -22,6 +22,10 @@ public class GuideOrder extends BaseEntity {
      * 订单状态
      */
     private Integer status;
+    /**
+     * 关联学霸贴
+     */
+    private String guideTaskNo;
 
     /**
      * 获取发帖者
@@ -75,5 +79,13 @@ public class GuideOrder extends BaseEntity {
      */
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getGuideTaskNo() {
+        return guideTaskNo;
+    }
+
+    public void setGuideTaskNo(String guideTaskNo) {
+        this.guideTaskNo = guideTaskNo;
     }
 }

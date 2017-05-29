@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.san.graduation.mapper.GuideTaskMapper">
-  <resultMap id="BaseResultMap" type="com.san.graduation.domain.GuideTask">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <result column="created_at" jdbcType="DATE" property="createdAt" />
-    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
-    <result column="task_no" jdbcType="VARCHAR" property="taskNo" />
-    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
-    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
-    <result column="tag" jdbcType="VARCHAR" property="tag" />
-    <result column="max_number" jdbcType="INTEGER" property="maxNumber" />
-    <result column="already_number" jdbcType="INTEGER" property="alreadyNumber" />
-    <result column="task_status" jdbcType="INTEGER" property="taskStatus" />
-    <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.san.graduation.domain.GuideTask">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="created_at" jdbcType="DATE" property="createdAt"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="task_no" jdbcType="VARCHAR" property="taskNo"/>
+        <result column="task_title" jdbcType="VARCHAR" property="taskTitle"/>
+        <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
+        <result column="tag" jdbcType="VARCHAR" property="tag"/>
+        <result column="max_number" jdbcType="INTEGER" property="maxNumber"/>
+        <result column="already_number" jdbcType="INTEGER" property="alreadyNumber"/>
+        <result column="task_status" jdbcType="INTEGER" property="taskStatus"/>
+        <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent"/>
+    </resultMap>
 
-  <sql id="baseSql">task_title,task_content,tag,task_no,user_no,created_at,created_by </sql>
+    <!-- 一对多 -->
+    <resultMap id="BaseResultMapVo" type="com.san.graduation.dto.GuideTaskMapDto">
+        <collection property="guideOrders" ofType="com.san.graduation.domain.GuideOrder">
+            <result column="send_no" jdbcType="VARCHAR" property="sendNo"/>
+            <result column="recevier_no" jdbcType="VARCHAR" property="recevierNo"/>
+            <result column="status" jdbcType="INTEGER" property="status"/>
+            <result column="task_no" jdbcType="VARCHAR" property="taskNo" />
+        </collection>
+    </resultMap>
 
-  <select id="findByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT <include refid="baseSql" /> from guide_task WHERE  is_delete = 0
-    <if test="null!=keyWord"> or task_title like concat('%',#{keyWord},'%')</if>
-    <if test="null!=keyWord"> or task_content like concat('%',#{keyWord},'%')</if>
-    <if test="null!=keyWord"> or tag like concat('%',#{keyWord},'%')</if>
+    <sql id="baseSql">task.task_title,task.task_content,task.tag,task.task_no,task.user_no,task.created_at,task.created_by</sql>
+    <sql id="baseOrderSql">g_order.send_no,g_order.recevier_no,g_order.status,g_order.guide_task_no</sql>
 
-  </select>
+    <select id="findByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseSql"/>
+        from guide_task task WHERE task.is_delete = 0
+        <if test="null!=keyWord">or task.task_title like concat('%',#{keyWord},'%')</if>
+        <if test="null!=keyWord">or task.task_content like concat('%',#{keyWord},'%')</if>
+        <if test="null!=keyWord">or task.tag like concat('%',#{keyWord},'%')</if>
+
+    </select>
+
+    <select id="findBySendNo" parameterType="java.lang.String" resultMap="BaseResultMapVo">
+        SELECT
+        <include refid="baseSql"/>
+        ,<include refid="baseOrderSql"/>
+        from guide_task task
+        left join guide_order g_order on task.task_no = g_order.guide_task_no
+        WHERE g_order.send_no = #{sendNo} and g_order.is_delete = 0 and task.is_delete = 0
+
+
+    </select>
+
+
 </mapper>
