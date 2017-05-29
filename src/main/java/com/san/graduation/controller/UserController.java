@@ -1,12 +1,16 @@
 package com.san.graduation.controller;
 
 import com.san.graduation.common.BaseResponse;
+import com.san.graduation.common.UserContext;
 import com.san.graduation.common.util.Logger;
+import com.san.graduation.controller.param.GetUserInfoParam;
 import com.san.graduation.controller.param.UpdateUserParam;
 import com.san.graduation.controller.param.UserParam;
+import com.san.graduation.controller.result.UserInfoResult;
 import com.san.graduation.controller.result.UserResult;
 import com.san.graduation.domain.User;
 import com.san.graduation.dto.UserDto;
+import com.san.graduation.dto.UserInfoDto;
 import com.san.graduation.service.impl.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +73,22 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResponse updateUserInfo(@RequestBody UpdateUserParam updateUserParam) {
         Logger.info(this, "init updateUserInfo : ");
-//        UserDto userDto = userService.findByMobileNoAndPassword(userParam.getMobileNo(), userParam.getPassword());
+        updateUserParam.setUserNo(UserContext.getCurrentUserNo().get());
+        userService.updateUserInfoByUserNo(updateUserParam);
         UserResult userResult = UserResult.succcess();
-//        userResult.setUserDto(userDto);
         return userResult;
+    }
+
+    /**
+     * 获取用户详细信息
+     */
+    @RequestMapping(value = "find/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public BaseResponse updateUserInfo(@RequestBody GetUserInfoParam param) {
+        Logger.info(this, "init getUserInfo : ");
+        UserInfoDto dto = userService.getUserInfoByUserNo(param.getUserNo());
+        UserInfoResult result = UserInfoResult.succcess();
+        result.setData(dto);
+        return result;
     }
 }

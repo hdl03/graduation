@@ -8,4 +8,7 @@ import tk.mybatis.mapper.common.Mapper;
  * 用户详情
  */
 public interface UserDetailMapper extends CommonMapper<UserDetail> {
+    public int updateUserInfoByUserNo(UserDetail userDetail);
+
+    public UserDetail findByUserNo(String userNo);
 }

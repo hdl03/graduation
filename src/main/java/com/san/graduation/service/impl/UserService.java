@@ -10,15 +10,20 @@ import com.san.graduation.domain.User;
 import com.san.graduation.domain.UserDetail;
 import com.san.graduation.domain.UserToken;
 import com.san.graduation.dto.UserDto;
+import com.san.graduation.dto.UserInfoDto;
 import com.san.graduation.exception.ExistUserException;
 import com.san.graduation.exception.ParamsException;
 import com.san.graduation.exception.WrangUserOrPassException;
 import com.san.graduation.mapper.UserDetailMapper;
 import com.san.graduation.mapper.UserMapper;
 import com.san.graduation.mapper.UserTokenMapper;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -57,11 +62,6 @@ public class UserService {
         userDetailMapper.insertSelective(userDetail);
 
         return userMapper.insert(user);
-    }
-
-    public int updateByUserNo(User user) {
-        return userMapper.updateByPrimaryKey(user);
-
     }
 
     public int deleteByUserNo(String userNo) {
@@ -121,9 +121,31 @@ public class UserService {
     /**
      * 更新用户信息
      */
-    public int updateUserInfoByUserNo(UpdateUserParam param){
-        if(param == null){
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updateUserInfoByUserNo(UpdateUserParam param){
+        if(param == null|| StringUtils.isEmpty(param.getUserNo())){
             throw new ParamsException();
         }
+        User user = new User();
+        BeanUtils.copyProperties(param,user);
+        userMapper.updateUserInfoByUserNo(user);
+        UserDetail userDetail = new UserDetail();
+        BeanUtils.copyProperties(param,userDetail);
+        userDetailMapper.updateUserInfoByUserNo(userDetail);
+    }
+
+    public UserInfoDto getUserInfoByUserNo(String userNo){
+        if(StringUtils.isEmpty(userNo)){
+            throw new ParamsException();
+        }
+        User user = userMapper.findByUserNo(userNo);
+        UserDetail detail = userDetailMapper.findByUserNo(userNo);
+        if(user == null||detail == null){
+            throw new ParamsException();
+        }
+        UserInfoDto dto = new UserInfoDto();
+        BeanUtils.copyProperties(user,dto);
+        BeanUtils.copyProperties(detail,dto);
+        return dto;
     }
 }

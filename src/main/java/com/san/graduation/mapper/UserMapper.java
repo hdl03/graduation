@@ -20,4 +20,5 @@ public interface UserMapper extends CommonMapper<User> {
 
     public User findByMobileNoAndPassword(@Param("mobileNo") String mobile, @Param("password")String password);
 
+    public int updateUserInfoByUserNo(User user);
 }

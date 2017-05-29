@@ -36,8 +36,8 @@
         SELECT <include refid="baseSql"/> from user user WHERE  user.is_delete = 0 and user.mobile_no = #{userNo}
     </select>
 
-    <update id="updateUserByUserNo" parameterType="com.san.graduation.domain.User">
-        UPDATE user set major = #{major}  where user_no = #{userNo}
+    <update id="updateUserInfoByUserNo" parameterType="com.san.graduation.domain.User">
+        UPDATE user set major = #{major},user_name = #{userName},mobile_no = #{mobileNo},province = #{province},city = #{city},address = #{address},school = #{school},major = #{major} where user_no = #{userNo}
     </update>
 
 </mapper>

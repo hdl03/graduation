@@ -1,10 +1,12 @@
-package com.san.graduation.controller.param;
+package com.san.graduation.dto;
+
+import java.math.BigDecimal;
 
 /**
- * Created by wuzr on 2017/5/28.
- * 更新用户信息参数
+ * Created by wuzr on 2017/5/29.
+ * 返回用户详细信息
  */
-public class UpdateUserParam {
+public class UserInfoDto {
     private String userName; //用户姓名
     private String mobileNo; //用户手机号
     private String province; //省份
@@ -16,21 +18,23 @@ public class UpdateUserParam {
     private String skill; //技能，不同的技能用逗号分开
     private String introduction; //自问简介
     private String userNo; //用户编号
+    private int totalTask; //总的帖子数
+    private BigDecimal avgScore; //评价
 
-    public String getUserNo() {
-        return userNo;
+    public int getTotalTask() {
+        return totalTask;
     }
 
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
+    public void setTotalTask(int totalTask) {
+        this.totalTask = totalTask;
     }
 
-    public String getIntroduction() {
-        return introduction;
+    public BigDecimal getAvgScore() {
+        return avgScore;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    public void setAvgScore(BigDecimal avgScore) {
+        this.avgScore = avgScore;
     }
 
     public String getUserName() {
@@ -103,5 +107,21 @@ public class UpdateUserParam {
 
     public void setSkill(String skill) {
         this.skill = skill;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
     }
 }

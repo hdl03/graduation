@@ -9,7 +9,17 @@
     <result column="total_task" jdbcType="INTEGER" property="totalTask" />
     <result column="avg_score" jdbcType="DECIMAL" property="avgScore" />
     <result column="user_no" jdbcType="VARCHAR" property="userNo" />
-    <result column="photo" jdbcType="LONGVARBINARY" property="photo" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
     <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
   </resultMap>
+
+  <sql id="baseSql">skill,total_task,avg_score,photo,introduction </sql>
+
+  <update id="updateUserInfoByUserNo" parameterType="com.san.graduation.domain.User">
+    UPDATE user_detail set skill = #{skill},photo = #{photo},introduction = #{introduction} where user_no = #{userNo}
+  </update>
+
+  <select id="findByUserNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT <include refid="baseSql"/> from user_detail WHERE  user.is_delete = 0 and user.user_no = #{userNo}
+  </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.san.graduation.domain;
 
+import com.san.graduation.common.BaseEntity;
+
 import javax.persistence.*;
 
 @Table(name = "user_detail")
@@ -30,7 +32,7 @@ public class UserDetail extends BaseEntity {
     /**
      * 图片
      */
-    private byte[] photo;
+    private String photo;
 
     /**
      * 介绍
@@ -114,7 +116,7 @@ public class UserDetail extends BaseEntity {
      *
      * @return photo - 图片
      */
-    public byte[] getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
@@ -123,7 +125,7 @@ public class UserDetail extends BaseEntity {
      *
      * @param photo 图片
      */
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
