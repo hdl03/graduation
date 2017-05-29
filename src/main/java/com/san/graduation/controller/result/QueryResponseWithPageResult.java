@@ -1,5 +1,6 @@
 package com.san.graduation.controller.result;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.pagehelper.PageInfo;
 import com.san.graduation.common.BaseResponse;
 import com.san.graduation.common.error.Error;
@@ -8,6 +9,7 @@ import com.san.graduation.dto.PageDto;
 /**
  * Created by Administrator on 2017\5\29 0029.
  */
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class QueryResponseWithPageResult extends BaseResponse {
     private Object data;
     private PageDto pageInfo;

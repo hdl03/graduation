@@ -25,12 +25,56 @@ public class OrderController {
 
 
     /**
-     * 学霸获取我的帖子
+     * 学霸获取我的订单
      *
      * @return
      */
     @PostMapping("myGuideOrder")
     public BaseResponse gainMyGuideOrder(@RequestBody PageParam pageParam) {
+
+        PageInfo pageInfo = guideOrderService.gainMyGuideOrder(pageParam.getStartPage(), pageParam.getPageSize());
+        PageDto pageDto = new PageDto();
+        BeanUtils.copyProperties(pageInfo, pageDto);
+        return QueryResponseWithPageResult.success(pageInfo.getList(), pageDto);
+
+    }
+
+    /**
+     * 获取学渣帖
+     *
+     */
+
+    @PostMapping("myHelpOrder")
+    public BaseResponse gainMyHelpOrder(@RequestBody PageParam pageParam) {
+
+        PageInfo pageInfo = guideOrderService.gainMyGuideOrder(pageParam.getStartPage(), pageParam.getPageSize());
+        PageDto pageDto = new PageDto();
+        BeanUtils.copyProperties(pageInfo, pageDto);
+        return QueryResponseWithPageResult.success(pageInfo.getList(), pageDto);
+
+    }
+
+
+    /**
+     *  订单状态修改
+     */
+
+    @PostMapping("updateHelpOrder")
+    public BaseResponse updateMyHelpOrder(@RequestBody PageParam pageParam) {
+
+        PageInfo pageInfo = guideOrderService.gainMyGuideOrder(pageParam.getStartPage(), pageParam.getPageSize());
+        PageDto pageDto = new PageDto();
+        BeanUtils.copyProperties(pageInfo, pageDto);
+        return QueryResponseWithPageResult.success(pageInfo.getList(), pageDto);
+
+    }
+
+    /**
+     *  订单状态修改
+     */
+
+    @PostMapping("updateGuideOrder")
+    public BaseResponse updateMyGuideOrder(@RequestBody PageParam pageParam) {
 
         PageInfo pageInfo = guideOrderService.gainMyGuideOrder(pageParam.getStartPage(), pageParam.getPageSize());
         PageDto pageDto = new PageDto();
