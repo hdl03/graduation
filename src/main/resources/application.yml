@@ -117,7 +117,7 @@ graduation:
      username: graduation
      password: graduation
   login:
-    expireTime: 300000
+    expireTime: 3000000000
     checkUrl: /publish/guide_task,/publish/help_task
   logger:
     level: debug

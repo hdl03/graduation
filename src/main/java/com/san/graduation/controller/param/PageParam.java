@@ -6,9 +6,9 @@ import com.san.graduation.common.BaseParam;
  * Created by wuzr on 2017/5/20.
  * 分页查询请求参数
  */
-public class PageParam extends BaseParam{
-    private int startPage;
-    private int pageSize;
+public class PageParam extends BaseParam {
+    private int startPage = 1;
+    private int pageSize = 10;
     private String keyWord;
 
     public int getStartPage() {
