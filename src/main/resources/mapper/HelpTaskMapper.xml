@@ -17,7 +17,7 @@
     <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent" />
   </resultMap>
 
-  <sql id="baseSql">task_title,task_content,tag,task_no,user_no,created_at,created_by </sql>
+  <sql id="baseSql">task_title,task_content,tag,task_no,user_no,created_at,created_by,max_number,already_number,task_status</sql>
 
   <select id="findByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
     SELECT <include refid="baseSql" /> from help_task WHERE  is_delete = 0

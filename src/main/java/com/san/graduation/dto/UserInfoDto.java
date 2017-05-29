@@ -18,14 +18,14 @@ public class UserInfoDto {
     private String skill; //技能，不同的技能用逗号分开
     private String introduction; //自问简介
     private String userNo; //用户编号
-    private int totalTask; //总的帖子数
+    private Integer totalTask; //总的帖子数
     private BigDecimal avgScore; //评价
 
-    public int getTotalTask() {
+    public Integer getTotalTask() {
         return totalTask;
     }
 
-    public void setTotalTask(int totalTask) {
+    public void setTotalTask(Integer totalTask) {
         this.totalTask = totalTask;
     }
 

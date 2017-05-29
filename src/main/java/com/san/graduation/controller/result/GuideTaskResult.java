@@ -45,6 +45,33 @@ public class GuideTaskResult extends BaseResponse{
         private String taskContent;
         private Date createdAt;
         private String createdBy;
+        private Integer maxNumber;
+        private Integer alreadyNumber;
+        private Integer taskStatus;
+
+        public Integer getMaxNumber() {
+            return maxNumber;
+        }
+
+        public void setMaxNumber(Integer maxNumber) {
+            this.maxNumber = maxNumber;
+        }
+
+        public Integer getAlreadyNumber() {
+            return alreadyNumber;
+        }
+
+        public void setAlreadyNumber(Integer alreadyNumber) {
+            this.alreadyNumber = alreadyNumber;
+        }
+
+        public Integer getTaskStatus() {
+            return taskStatus;
+        }
+
+        public void setTaskStatus(Integer taskStatus) {
+            this.taskStatus = taskStatus;
+        }
 
         public String getTaskNo() {
             return taskNo;

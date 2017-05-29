@@ -27,7 +27,7 @@
         </collection>
     </resultMap>
 
-    <sql id="baseSql">task.task_title,task.task_content,task.tag,task.task_no,task.user_no,task.created_at,task.created_by</sql>
+    <sql id="baseSql">task.task_title,task.task_content,task.tag,task.task_no,task.user_no,task.created_at,task.created_by,max_number,already_number,task_status</sql>
     <sql id="baseOrderSql">g_order.send_no,g_order.recevier_no,g_order.status,g_order.guide_task_no</sql>
 
     <select id="findByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">

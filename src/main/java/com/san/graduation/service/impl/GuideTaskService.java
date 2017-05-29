@@ -28,6 +28,13 @@ public class GuideTaskService {
             Logger.error(this, "title不能为空");
             throw new ParamsException();
         }
+        if(task.getMaxNumber() == null||task.getMaxNumber() < 1){
+            Logger.error(this,"最大的接受数不能小于1");
+            throw new ParamsException();
+        }
+        //帖子的状态默认是0
+        task.setTaskStatus(0);
+        task.setAlreadyNumber(0);
         task.setTaskNo(UUIDUtils.getInstance().getUniqueId());
         return guideTaskMapper.insert(task);
     }

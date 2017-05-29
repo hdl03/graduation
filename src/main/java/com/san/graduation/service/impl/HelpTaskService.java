@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by wuzr on 2017/5/20.
- * 操作学霸贴
+ * 操作学渣贴
  */
 @Service
 public class HelpTaskService {
@@ -26,6 +26,10 @@ public class HelpTaskService {
             Logger.error(this, "title不能为空");
             throw new ParamsException();
         }
+        //学渣帖子默认只能接受一个学霸
+        task.setMaxNumber(1);
+        task.setAlreadyNumber(0);
+        task.setTaskStatus(0);
         task.setTaskNo(UUIDUtils.getInstance().getUniqueId());
         return helpTaskMapper.insert(task);
     }

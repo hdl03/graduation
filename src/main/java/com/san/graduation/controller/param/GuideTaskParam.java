@@ -10,6 +10,15 @@ public class GuideTaskParam extends BaseParam{
     private String taskTitle; //帖子标题
     private String tag; //帖子标签
     private String taskContent; //帖子内容
+    private Integer maxNumber; //最多可接受的学渣数
+
+    public Integer getMaxNumber() {
+        return maxNumber;
+    }
+
+    public void setMaxNumber(Integer maxNumber) {
+        this.maxNumber = maxNumber;
+    }
 
     public String getTaskContent() {
         return taskContent;
