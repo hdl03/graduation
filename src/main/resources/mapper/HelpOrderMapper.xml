@@ -8,5 +8,57 @@
     <result column="send_no" jdbcType="VARCHAR" property="sendNo" />
     <result column="recevier_no" jdbcType="VARCHAR" property="recevierNo" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="help_task_no" jdbcType="VARCHAR" property="helpTaskNo"/>
+    <result column="created_at" jdbcType="DATE" property="createdAt"/>
   </resultMap>
+
+  <!-- 多对一 -->
+  <resultMap id="BaseResultMapVo" type="com.san.graduation.dto.HelpOrderMapDto" extends="BaseResultMap">
+    <association property="helpTask" resultMap="BaseResultMapHelp"></association>
+  </resultMap>
+
+  <resultMap id="BaseResultMapHelp" type="com.san.graduation.domain.HelpTask">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="created_at" jdbcType="DATE" property="createdAt" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="task_no" jdbcType="VARCHAR" property="taskNo" />
+    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="max_number" jdbcType="INTEGER" property="maxNumber" />
+    <result column="already_number" jdbcType="INTEGER" property="alreadyNumber" />
+    <result column="task_status" jdbcType="INTEGER" property="taskStatus" />
+    <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent" />
+  </resultMap>
+
+  <sql id="baseSql">task.task_title,task.task_content,task.tag,task.task_no,task.user_no,task.created_at,task.created_by,max_number,already_number,task_status</sql>
+  <sql id="baseOrderSql">h_order.send_no,h_order.recevier_no,h_order.status,h_order.help_task_no,h_order.created_at</sql>
+
+
+  <select id="findBySendNo" parameterType="java.lang.String" resultMap="BaseResultMapVo">
+    SELECT
+    <include refid="baseSql"/>
+    ,<include refid="baseOrderSql"/>
+    from help_order h_order
+    left join help_task task on  h_order.help_task_no = task.task_no
+    WHERE h_order.send_no = #{sendNo} and h_order.is_delete = 0 and task.is_delete = 0
+
+
+  </select>
+
+  <select id="findByRecevierNo" parameterType="java.lang.String" resultMap="BaseResultMapVo">
+    SELECT
+    <include refid="baseSql"/>
+    ,<include refid="baseOrderSql"/>
+    from help_order h_order
+    left join help_task task on  h_order.help_task_no = task.task_no
+    WHERE h_order.recevier_no = #{recevierNo} and h_order.is_delete = 0 and task.is_delete = 0
+
+
+  </select>
+
+
+
 </mapper>

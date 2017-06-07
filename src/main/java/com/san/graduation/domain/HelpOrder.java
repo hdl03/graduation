@@ -2,7 +2,8 @@ package com.san.graduation.domain;
 
 import com.san.graduation.common.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 @Table(name = "help_order")
 public class HelpOrder extends BaseEntity {
@@ -22,6 +23,8 @@ public class HelpOrder extends BaseEntity {
      * 订单状态
      */
     private Integer status;
+
+    private String helpTaskNo;
 
     /**
      * 获取发帖人编号
@@ -75,5 +78,13 @@ public class HelpOrder extends BaseEntity {
      */
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getHelpTaskNo() {
+        return helpTaskNo;
+    }
+
+    public void setHelpTaskNo(String helpTaskNo) {
+        this.helpTaskNo = helpTaskNo;
     }
 }

@@ -1,18 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.san.graduation.mapper.GuideOrderMapper">
-  <resultMap id="BaseResultMap" type="com.san.graduation.domain.GuideOrder">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <result column="send_no" jdbcType="VARCHAR" property="sendNo" />
-    <result column="recevier_no" jdbcType="VARCHAR" property="recevierNo" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="task_no" jdbcType="VARCHAR" property="taskNo" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.san.graduation.domain.GuideOrder">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="send_no" jdbcType="VARCHAR" property="sendNo"/>
+        <result column="recevier_no" jdbcType="VARCHAR" property="recevierNo"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="guide_task_no" jdbcType="VARCHAR" property="guideTaskNo"/>
+        <result column="created_at" jdbcType="DATE" property="createdAt"/>
+    </resultMap>
 
-  <sql id="baseSql"> info.send_no,info.recevier_no,info.status</sql>
+    <!-- 多对一 -->
+    <resultMap id="BaseResultMapVo" type="com.san.graduation.dto.GuideOrderMapDto" extends="BaseResultMap">
+        <association property="guideTask" resultMap="BaseResultMapGuide"></association>
+    </resultMap>
 
+
+    <resultMap id="BaseResultMapGuide" type="com.san.graduation.domain.GuideTask">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="created_at" jdbcType="DATE" property="createdAt"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="task_no" jdbcType="VARCHAR" property="taskNo"/>
+        <result column="task_title" jdbcType="VARCHAR" property="taskTitle"/>
+        <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
+        <result column="tag" jdbcType="VARCHAR" property="tag"/>
+        <result column="max_number" jdbcType="INTEGER" property="maxNumber"/>
+        <result column="already_number" jdbcType="INTEGER" property="alreadyNumber"/>
+        <result column="task_status" jdbcType="INTEGER" property="taskStatus"/>
+        <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent"/>
+    </resultMap>
+
+
+    <sql id="baseSql">task.task_title,task.task_content,task.tag,task.task_no,task.user_no,task.created_at,task.created_by,max_number,already_number,task_status</sql>
+    <sql id="baseOrderSql">g_order.send_no,g_order.recevier_no,g_order.status,g_order.guide_task_no,g_order.created_at</sql>
+
+
+    <select id="findBySendNo" parameterType="java.lang.String" resultMap="BaseResultMapVo">
+        SELECT
+        <include refid="baseSql"/>
+        ,<include refid="baseOrderSql"/>
+        from guide_order g_order
+        left join guide_task task on  g_order.guide_task_no = task.task_no
+        WHERE g_order.send_no = #{sendNo} and g_order.is_delete = 0 and task.is_delete = 0
+
+
+    </select>
+
+    <select id="findByRecevierNo" parameterType="java.lang.String" resultMap="BaseResultMapVo">
+        SELECT
+        <include refid="baseSql"/>
+        ,<include refid="baseOrderSql"/>
+        from guide_task task
+        left join guide_order g_order on task.task_no = g_order.guide_task_no
+        WHERE g_order.recevier_no = #{recevierNo} and g_order.is_delete = 0 and task.is_delete = 0
+
+
+    </select>
 
 
 </mapper>

@@ -2,7 +2,8 @@ package com.san.graduation.domain;
 
 import com.san.graduation.common.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 @Table(name = "guide_order")
 public class GuideOrder extends BaseEntity {
@@ -26,6 +27,11 @@ public class GuideOrder extends BaseEntity {
      * 关联学霸贴
      */
     private String guideTaskNo;
+
+    /**
+     *帖子编号
+     */
+    private String taskNo;
 
     /**
      * 获取发帖者

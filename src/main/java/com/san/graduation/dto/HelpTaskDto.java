@@ -2,12 +2,10 @@ package com.san.graduation.dto;
 
 import com.san.graduation.common.BaseBean;
 
-import java.util.List;
-
 /**
  * Created by Administrator on 2017\5\29 0029.
  */
-public class GuideTaskDto extends BaseBean {
+public class HelpTaskDto extends BaseBean {
 
     /**
      * 帖子编号
@@ -56,7 +54,7 @@ public class GuideTaskDto extends BaseBean {
 
     private String taskContent;
 
-    private GuideOrderDto guideOrderDto;
+    private HelpOrderDto helpOrderDto;
 
     public String getTaskNo() {
         return taskNo;
@@ -122,13 +120,11 @@ public class GuideTaskDto extends BaseBean {
         this.taskContent = taskContent;
     }
 
-    public GuideOrderDto getGuideOrderDto() {
-        return guideOrderDto;
+    public HelpOrderDto getHelpOrderDto() {
+        return helpOrderDto;
     }
 
-    public void setGuideOrderDto(GuideOrderDto guideOrderDto) {
-        this.guideOrderDto = guideOrderDto;
+    public void setHelpOrderDto(HelpOrderDto helpOrderDto) {
+        this.helpOrderDto = helpOrderDto;
     }
-
-
 }

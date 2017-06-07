@@ -17,18 +17,8 @@
         <result column="task_content" jdbcType="LONGVARCHAR" property="taskContent"/>
     </resultMap>
 
-    <!-- 一对多 -->
-    <resultMap id="BaseResultMapVo" type="com.san.graduation.dto.GuideTaskMapDto">
-        <collection property="guideOrders" ofType="com.san.graduation.domain.GuideOrder">
-            <result column="send_no" jdbcType="VARCHAR" property="sendNo"/>
-            <result column="recevier_no" jdbcType="VARCHAR" property="recevierNo"/>
-            <result column="status" jdbcType="INTEGER" property="status"/>
-            <result column="task_no" jdbcType="VARCHAR" property="taskNo" />
-        </collection>
-    </resultMap>
 
     <sql id="baseSql">task.task_title,task.task_content,task.tag,task.task_no,task.user_no,task.created_at,task.created_by,max_number,already_number,task_status</sql>
-    <sql id="baseOrderSql">g_order.send_no,g_order.recevier_no,g_order.status,g_order.guide_task_no</sql>
 
     <select id="findByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT
@@ -40,16 +30,6 @@
 
     </select>
 
-    <select id="findBySendNo" parameterType="java.lang.String" resultMap="BaseResultMapVo">
-        SELECT
-        <include refid="baseSql"/>
-        ,<include refid="baseOrderSql"/>
-        from guide_task task
-        left join guide_order g_order on task.task_no = g_order.guide_task_no
-        WHERE g_order.send_no = #{sendNo} and g_order.is_delete = 0 and task.is_delete = 0
-
-
-    </select>
 
 
 </mapper>
