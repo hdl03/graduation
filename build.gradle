@@ -19,7 +19,7 @@ apply plugin: 'org.springframework.boot'
 
 jar {
 	baseName = 'graduation-app'
-	version = '0.0.1-SNAPSHOT'
+	/* version = '0.0.1-SNAPSHOT' */
 }
 
 /*springBoot  {
